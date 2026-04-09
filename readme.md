@@ -63,8 +63,8 @@ The SDK exposes a clean, callback-driven C++ interface via `webrtc_api.h`:
 ```cpp
 #include "webrtc_api.h"
 
-// 1. Create client instance (signal server URL, room ID, media file hint)
-auto client = webrtc_sdk::WebrtcSdkClient::Create(signal_url, room_id, media_file);
+// 1. Create client instance (signal server URL, room ID)
+auto client = webrtc_sdk::WebrtcSdkClient::Create(signal_url, room_id);
 
 // 2. Add a video track
 client->AddTrack(track_id);
@@ -308,8 +308,8 @@ SDK 通过 `webrtc_api.h` 暴露简洁的回调驱动式 C++ 接口：
 ```cpp
 #include "webrtc_api.h"
 
-// 1. 创建客户端实例（信令服务器地址、房间号、媒体文件）
-auto client = webrtc_sdk::WebrtcSdkClient::Create(signal_url, room_id, media_file);
+// 1. 创建客户端实例（信令服务器地址、房间号）
+auto client = webrtc_sdk::WebrtcSdkClient::Create(signal_url, room_id);
 
 // 2. 添加视频轨道
 client->AddTrack(track_id);

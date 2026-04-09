@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 
   signal(SIGINT, signal_handler);
 
-  auto instance = webrtc_sdk::WebrtcSdkClient::Create(addr, room_id, filename);
+  auto instance = webrtc_sdk::WebrtcSdkClient::Create(addr, room_id);
   instance->AddTrack(10000);
   //instance->AddTrack(10001);
   std::shared_ptr<Reader> m_h264_reader = std::make_shared<H264Reader>(filename, 10);

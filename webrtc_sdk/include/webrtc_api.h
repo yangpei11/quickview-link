@@ -21,7 +21,6 @@ class WebrtcSdkClient {
   static std::unique_ptr<WebrtcSdkClient> Create(
       const std::string& signal_url,
       const std::string& room_id,
-      const std::string& media_file,
       bool enable_audio = true);
 
   virtual ~WebrtcSdkClient() = default;
