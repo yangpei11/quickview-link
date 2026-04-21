@@ -233,16 +233,6 @@ I will provide:
 - Technical support for integration
 - Customization for your specific use case
 
-## Recommended GitHub Topics
-
-When publishing to GitHub, add these topics to your repository for better discoverability:
-
-`webrtc` `low-latency` `video-streaming` `teleoperation` `remote-driving` `robot-control` `robotics` `autonomous-driving` `embedded-linux` `arm64` `jetson` `h264` `real-time` `cpp-sdk` `edge-computing` `uav` `drone` `industrial-iot`
-
-**Recommended repo description (for GitHub Settings):**
-
-> Ultra-low latency (<70ms) WebRTC video streaming C++ SDK for teleoperation, remote driving, robot control, and embedded Linux (ARM64/Jetson). Push H.264 + PCM audio with ~50 lines of code.
-
 ## License
 
 This demo code is provided as-is for evaluation purposes. The WebRTC SDK (`libwebrtc_sdk.so`) is proprietary software — please contact me for licensing details.
@@ -476,16 +466,6 @@ qemu-aarch64 -L /usr/aarch64-linux-gnu ./pusher -a ws://127.0.0.1:8080 -r 10
 - 接收端示例代码（浏览器 / 原生应用）
 - 接入技术支持
 - 针对您具体场景的定制化方案
-
-## 推荐的 GitHub Topics
-
-发布到 GitHub 时，建议在仓库设置中添加以下 Topics 以提高搜索可见性：
-
-`webrtc` `low-latency` `video-streaming` `teleoperation` `remote-driving` `robot-control` `robotics` `autonomous-driving` `embedded-linux` `arm64` `jetson` `h264` `real-time` `cpp-sdk` `edge-computing` `uav` `drone` `industrial-iot`
-
-**推荐的仓库描述（GitHub Settings 页面填写）：**
-
-> 超低时延（<70ms）WebRTC 视频推流 C++ SDK，适用于远程驾驶、机器人遥操作、无人机图传、边缘设备推流。支持嵌入式 Linux（ARM64/Jetson），约50行代码即可完成 H.264 + PCM 音频推流。
 
 ## 许可证
 
