@@ -11,12 +11,12 @@ add_definitions("-fno-rtti -Wno-attributes")
 message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
 message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
 
-include_directories(${CMAKE_SOURCE_DIR}/webrtc_sdk/include)
+include_directories(${CMAKE_SOURCE_DIR}/quickview_link_sdk/include)
 
 
-add_executable(pusher main.cc reader.cc) 
+add_executable(pusher main.cc reader.cc)
 target_link_libraries(pusher
-    ${CMAKE_SOURCE_DIR}/webrtc_sdk/lib/libwebrtc_sdk.so
+    ${CMAKE_SOURCE_DIR}/quickview_link_sdk/lib/libquickview_link.so
     dl
 )
 

@@ -1,12 +1,12 @@
-// webrtc_api.h
-#ifndef WEBRTC_API_H_
-#define WEBRTC_API_H_
+// quickview_link.h
+#ifndef QUICKVIEW_LINK_H_
+#define QUICKVIEW_LINK_H_
 
 #include <string>
 #include <functional>
 #include <memory>
 
-namespace webrtc_sdk {
+namespace quickview_link {
 
 using OnConnectedCallback = std::function<void()>;
 using OnDisconnectedCallback = std::function<void()>;
@@ -16,14 +16,14 @@ using OnIceCandidateCallback = std::function<void(const std::string& sdp_mid,
                                                   const std::string& sdp)>;
 using OnAudioFrameCallback = std::function<void(const uint8_t *buffer, int size)>;
 
-class WebrtcSdkClient {
+class QuickviewLinkClient {
  public:
-  static std::unique_ptr<WebrtcSdkClient> Create(
+  static std::unique_ptr<QuickviewLinkClient> Create(
       const std::string& signal_url,
       const std::string& room_id,
-      bool enable_audio = true);
+      bool is_sender = true);
 
-  virtual ~WebrtcSdkClient() = default;
+  virtual ~QuickviewLinkClient() = default;
 
   virtual bool Start() = 0;
   virtual void Stop() = 0;
@@ -35,14 +35,14 @@ class WebrtcSdkClient {
   virtual void SetOnIceCandidate(OnIceCandidateCallback cb) = 0;
 
   virtual void AddTrack(int trackId) = 0;
-  virtual void InputFrame(const uint8_t *buffer, int size, int trackId, uint64_t captureTime, int frameId, bool keyFrame = false) = 0;
+  virtual void InputFrame(const uint8_t *buffer, int size, int trackId) = 0;
   virtual void InputAudioData(const char *buffer, int size) = 0;
   virtual void setOnAudioFrameReceived(OnAudioFrameCallback cb) = 0;
 
  protected:
-  WebrtcSdkClient() = default;
+  QuickviewLinkClient() = default;
 };
 
-}  // namespace webrtc_sdk
+}  // namespace quickview_link
 
-#endif  // WEBRTC_API_H_
+#endif  // QUICKVIEW_LINK_H_

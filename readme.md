@@ -46,31 +46,31 @@ pusher-demo/
 ├── reader.cc                  # H264 NALU parser & PCM reader implementation
 ├── CMakeLists.txt             # Build configuration
 ├── arm64-toolchain.cmake      # ARM64 cross-compilation toolchain
-├── webrtc_sdk/
+├── quickview_link_sdk/
 │   ├── include/
-│   │   └── webrtc_api.h       # SDK public API header
+│   │   └── quickview_link.h       # SDK public API header
 │   └── lib/
-│       └── libwebrtc_sdk.so   # SDK shared library (not included in repo*)
+│       └── libquickview_link.so   # SDK shared library
 └── build/                     # Build output directory
 ```
 
-> \* `libwebrtc_sdk.so` is **not included** in this repository. See [How to Get the SDK](#how-to-get-the-sdk) below.
+> \* `libquickview_link.so` is **not included** in this repository. See [How to Get the SDK](#how-to-get-the-sdk) below.
 
 ## SDK API Overview
 
-The SDK exposes a clean, callback-driven C++ interface via `webrtc_api.h`:
+The SDK exposes a clean, callback-driven C++ interface via `quickview_link.h`:
 
 ```cpp
-#include "webrtc_api.h"
+#include "quickview_link.h"
 
 // 1. Create client instance (signal server URL, room ID)
-auto client = webrtc_sdk::WebrtcSdkClient::Create(signal_url, room_id);
+auto client = quickview_link::QuickviewLinkClient::Create(signal_url, room_id);
 
 // 2. Add a video track
 client->AddTrack(track_id);
 
 // 3. Push H.264 frames (raw NAL units with start code)
-client->InputFrame(buffer, size, track_id, capture_time_ms, frame_id);
+client->InputFrame(buffer, size, track_id);
 
 // 4. Push audio data (mono, 48kHz, 16-bit PCM)
 client->InputAudioData(buffer, size);
@@ -99,7 +99,7 @@ client->Stop();
 
 - CMake >= 3.14
 - C++14 compatible compiler (GCC recommended)
-- `libwebrtc_sdk.so` placed in `webrtc_sdk/lib/`
+- `libquickview_link.so` placed in `quickview_link_sdk/lib/`
 - A WebSocket signaling server running
 
 ### Build (x86_64)
@@ -221,21 +221,21 @@ For full product details, visit: **[https://shallyjin3.github.io/QuickView-link/
 
 ## How to Get the SDK
 
-The `libwebrtc_sdk.so` library and the receiver-side code are **not included** in this repository.
+The `libquickview_link.so` library and the receiver-side code are **not included** in this repository.
 
 If you are interested in using this SDK for your project, please contact me via email:
 
 **yangpei11@pku.edu.cn**
 
 I will provide:
-- The commercial SDK (`libwebrtc_sdk.so`) for your target platform (x86_64 / ARM64 / others)
+- The commercial SDK (`libquickview_link.so`) for your target platform (x86_64 / ARM64 / others)
 - Receiver-side sample code (browser / native)
 - Technical support for integration
 - Customization for your specific use case
 
 ## License
 
-This demo code is provided as-is for evaluation purposes. The WebRTC SDK (`libwebrtc_sdk.so`) is proprietary software — please contact me for licensing details.
+This demo code is provided as-is for evaluation purposes. The WebRTC SDK (`libquickview_link.so`) is proprietary software — please contact me for licensing details.
 
 ---
 
@@ -281,31 +281,31 @@ pusher-demo/
 ├── reader.cc                  # H264 NALU 解析器 & PCM 读取器实现
 ├── CMakeLists.txt             # 构建配置
 ├── arm64-toolchain.cmake      # ARM64 交叉编译工具链
-├── webrtc_sdk/
+├── quickview_link_sdk/
 │   ├── include/
-│   │   └── webrtc_api.h       # SDK 公开 API 头文件
+│   │   └── quickview_link.h       # SDK 公开 API 头文件
 │   └── lib/
-│       └── libwebrtc_sdk.so   # SDK 动态库（不包含在仓库中*）
+│       └── libquickview_link.so   # SDK 动态库
 └── build/                     # 构建输出目录
 ```
 
-> \* `libwebrtc_sdk.so` **不包含**在本仓库中。请参阅下方 [如何获取 SDK](#如何获取-sdk)。
+> \* `libquickview_link.so` **不包含**在本仓库中。请参阅下方 [如何获取 SDK](#如何获取-sdk)。
 
 ## SDK API 概览
 
-SDK 通过 `webrtc_api.h` 暴露简洁的回调驱动式 C++ 接口：
+SDK 通过 `quickview_link.h` 暴露简洁的回调驱动式 C++ 接口：
 
 ```cpp
-#include "webrtc_api.h"
+#include "quickview_link.h"
 
 // 1. 创建客户端实例（信令服务器地址、房间号）
-auto client = webrtc_sdk::WebrtcSdkClient::Create(signal_url, room_id);
+auto client = quickview_link::QuickviewLinkClient::Create(signal_url, room_id);
 
 // 2. 添加视频轨道
 client->AddTrack(track_id);
 
 // 3. 推送 H.264 视频帧（带 start code 的裸 NAL 单元）
-client->InputFrame(buffer, size, track_id, capture_time_ms, frame_id);
+client->InputFrame(buffer, size, track_id);
 
 // 4. 推送音频数据（单声道, 48kHz, 16-bit PCM）
 client->InputAudioData(buffer, size);
@@ -334,7 +334,7 @@ client->Stop();
 
 - CMake >= 3.14
 - 支持 C++14 的编译器（推荐 GCC）
-- 将 `libwebrtc_sdk.so` 放置于 `webrtc_sdk/lib/` 目录
+- 将 `libquickview_link.so` 放置于 `quickview_link_sdk/lib/` 目录
 - 一个运行中的 WebSocket 信令服务器
 
 ### 编译（x86_64）
@@ -455,18 +455,18 @@ qemu-aarch64 -L /usr/aarch64-linux-gnu ./pusher -a ws://127.0.0.1:8080 -r 10
 
 ## 如何获取 SDK
 
-`libwebrtc_sdk.so` 动态库和接收端代码**不包含**在本仓库中。
+`libquickview_link.so` 动态库和接收端代码**不包含**在本仓库中。
 
 如果您对本 SDK 感兴趣，欢迎通过邮件联系我：
 
 **yangpei11@pku.edu.cn**
 
 我将提供：
-- 适配您目标平台的商用 SDK（`libwebrtc_sdk.so`）（x86_64 / ARM64 / 其他平台）
+- 适配您目标平台的商用 SDK（`libquickview_link.so`）（x86_64 / ARM64 / 其他平台）
 - 接收端示例代码（浏览器 / 原生应用）
 - 接入技术支持
 - 针对您具体场景的定制化方案
 
 ## 许可证
 
-本 Demo 代码按原样提供，仅供评估使用。WebRTC SDK（`libwebrtc_sdk.so`）为私有软件 — 请联系我了解授权详情。
+本 Demo 代码按原样提供，仅供评估使用。WebRTC SDK（`libquickview_link.so`）为私有软件 — 请联系我了解授权详情。
